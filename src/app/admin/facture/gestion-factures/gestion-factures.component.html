@@ -1,0 +1,31 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="activeTab === 'saisir'"
+        (click)="setActiveTab('saisir'); $event.preventDefault();"
+        href="#"
+        >Saisir une Facture</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="activeTab === 'afficher'"
+        (click)="setActiveTab('afficher'); $event.preventDefault();"
+        href="#"
+        >Afficher les Factures</a
+      >
+    </li>
+  </ul>
+
+  <div class="tab-content mt-3">
+    <div *ngIf="activeTab === 'saisir'">
+      <app-saisir-facture></app-saisir-facture>
+    </div>
+    <div *ngIf="activeTab === 'afficher'">
+      <app-afficher-factures></app-afficher-factures>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,183 @@
+<div class="container">
+  <h3>Liste des factures</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Référence
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('reference', $event)">
+        </th>
+        <th>Date Edition
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('dateEtablissement', $event)">
+        </th>
+        <th>Date Echéance
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('dateEcheance', $event)">
+        </th>
+        <th>TJM
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('tjm', $event)">
+        </th>
+        <th>NB Jours
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('nbJours', $event)">
+        </th>
+        <th>Montant HT
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('montantHT', $event)">
+        </th>
+        <th>Montant TTC
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('montantTTC', $event)">
+        </th>
+        <th>Fournisseur
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('nomFournisseur', $event)">
+        </th>
+        <th>Client
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('nomClient', $event)">
+        </th>
+        <th>Statut
+          <input type="text" class="form-control" placeholder="Filtrer..." (input)="updateFilter('statut', $event)">
+        </th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let facture of filteredFactures">
+        <td>{{ facture.reference }}</td>
+        <td>{{ facture.dateEtablissement | date }}</td>
+        <td>{{ facture.dateEcheance | date }}</td>
+        <td>{{ facture.tjm | currency }}</td>
+        <td>{{ facture.nbJours }}</td>
+        <td>{{ facture.montantTTC | currency }}</td>
+        <td>{{ facture.montantHT | currency }}</td>
+        <td>{{ facture.nomFournisseur }}</td>
+        <td>{{ facture.nomClient }}</td>
+        <td>{{ facture.statut }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="openEditModal(facture)">
+            Éditer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Popin d'édition -->
+<div class="modal" [class.show]="isEditModalOpen" (click)="closeEditModal()">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier la facture</h5>
+        <button type="button" class="close" (click)="closeEditModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <form #factureEditForm="ngForm">
+          <div class="form-group">
+            <label>Référence</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedFacture.reference"
+              name="reference"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Date d'établissement</label>
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="selectedFacture.dateEtablissement"
+              name="dateEtablissement"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Date d'échéance</label>
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="selectedFacture.dateEcheance"
+              name="dateEtablissement"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>MontantHT</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="selectedFacture.montantHT"
+              name="montantHT"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>TJM</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="selectedFacture.tjm"
+              name="tjm"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Nb jours</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="selectedFacture.nbJours"
+              name="nbJours"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>MontantTTC</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="selectedFacture.montantTTC"
+              name="montantTTC"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Nom du Fournisseur</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedFacture.nomFournisseur"
+              name="nomFournisseur"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Nom du Client</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedFacture.nomClient"
+              name="nomClient"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Statut</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedFacture.statut"
+              name="statut"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeEditModal()">
+          Annuler
+        </button>
+        <button class="btn btn-primary" (click)="updateFacture()">
+          Valider
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
