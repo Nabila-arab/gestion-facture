@@ -1,4 +1,4 @@
-.modal {
+/*.modal {
   display: none;
   position: fixed;
   z-index: 1050;
@@ -12,4 +12,157 @@
 
 .modal.show {
   display: block;
+}*/
+
+
+/* --------- Conteneur principal --------- */
+.container {
+  max-width: 1100px;   /* Limite la largeur du container */
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Important pour padding */
+}
+
+/* --------- Titre --------- */
+h3 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 1.5rem;
+}
+
+/* --------- Tableau --------- */
+
+.table {
+  width: 100%;          /* Prend toute la largeur du container */
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* En-têtes */
+th {
+  background-color: #007bff;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+  padding: 12px 10px;
+}
+
+/* Cellules */
+td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* --------- Input de filtre dans le header --------- */
+input.form-control {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --------- Hover sur les lignes --------- */
+tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* --------- Style de la fenêtre modale --------- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  transition: opacity 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.show {
+  display: block;
+}
+
+/* Modale centrée */
+.modal-dialog {
+  max-width: 600px;
+  margin: 5% auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background: white;
+  box-sizing: border-box;
+
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.modal-content {
+  border: none;
+  border-radius: 12px;
+  overflow-y: auto; /* ✅ scroll à l’intérieur de la modale */
+  max-height: 90vh;
+}
+
+/* Header modal */
+.modal-header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-title {
+  margin: 0;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+button.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* --------- Champs de formulaire --------- */
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.form-control {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
 }

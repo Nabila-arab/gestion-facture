@@ -1,0 +1,60 @@
+<div class="container">
+  <h3>Recherche de Factures</h3>
+  <form (ngSubmit)="rechercherFactures()" class="row g-3">
+    <div class="col-md-3">
+      <label>Référence </label>
+      <input type="text" class="form-control" [(ngModel)]="searchFilter.reference" name="reference" />
+    </div>
+
+    <div class="col-md-3">
+      <label>Date d’établissement</label>
+      <input type="date" class="form-control" [(ngModel)]="searchFilter.dateEtablissement" name="dateEtablissement" />
+    </div>
+
+    <div class="col-md-3">
+      <label>Date d’échéance</label>
+      <input type="date" class="form-control" [(ngModel)]="searchFilter.dateEcheance" name="dateEcheance" />
+    </div>
+
+    <div class="col-md-3">
+      <label>Nom fournisseur</label>
+      <input type="text" class="form-control" [(ngModel)]="searchFilter.nomFournisseur" name="nomFournisseur" />
+    </div>
+
+    <div class="col-12 mt-3">
+      <button type="submit" class="btn btn-primary">Rechercher</button>
+    </div>
+  </form>
+
+  <hr />
+
+  <div *ngIf="factures.length > 0">
+    <h4>Résultats :</h4>
+    <table class="table table-bordered table-striped mt-2">
+      <thead>
+        <tr>
+          <th>Référence</th>
+          <th>Fournisseur</th>
+          <th>Client</th>
+          <th>Date établissement</th>
+          <th>Date échéance</th>
+          <th>Montant TTC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let f of factures">
+          <td>{{ f.reference }}</td>
+          <td>{{ f.nomFournisseur }}</td>
+          <td>{{ f.nomClient }}</td>
+          <td>{{ f.dateEtablissement }}</td>
+          <td>{{ f.dateEcheance }}</td>
+          <td>{{ f.montantTTC }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="factures.length === 0 && rechercheEffectuee" class="alert alert-warning mt-4">
+    Aucune facture trouvée avec ces données.
+  </div>
+
+</div>

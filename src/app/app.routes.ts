@@ -11,6 +11,7 @@ import { AjouterClientComponent } from './admin/client/ajouter-client/ajouter-cl
 import { AfficherClientsComponent } from './admin/client/afficher-clients/afficher-clients.component';
 import { LoginComponent } from './auth/login/login.component';
 import { GardService } from './shared/services/auth/gard.service';
+import { SearchFacturesComponent } from './admin/facture/search-factures/search-factures.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -24,6 +25,7 @@ export const routes: Routes = [
       { path: 'gestion-factures', component: GestionFacturesComponent, children: [
           { path: 'saisir', component: SaisirFactureComponent },
           { path: 'afficher', component: AfficherFacturesComponent },
+          { path: 'recherche', component: SearchFacturesComponent},
       ] },
       { path: 'gestion-collaborateurs', component: GestionCollaborateursComponent },
       { path: 'gestion-clients', component: GestionClientsComponent, children: [

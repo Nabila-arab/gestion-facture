@@ -18,6 +18,17 @@
         >Afficher les Factures</a
       >
     </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="activeTab === 'recherche'"
+        (click)="setActiveTab('recherche'); $event.preventDefault();"
+        href="#"
+        >Recherche des Factures</a
+      >
+    </li>
+    
   </ul>
 
   <div class="tab-content mt-3">
@@ -27,5 +38,9 @@
     <div *ngIf="activeTab === 'afficher'">
       <app-afficher-factures></app-afficher-factures>
     </div>
+    <div *ngIf="activeTab === 'recherche'">
+      <app-search-factures></app-search-factures>
+    </div>
   </div>
-</div>
+
+
