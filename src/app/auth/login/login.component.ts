@@ -71,6 +71,9 @@ export class LoginComponent {
       const { email, password } = this.form.value;
     
       if (this.authService.login(email, password)) {
+         // Enregistre le username dans localStorage
+        localStorage.setItem('username', email);
+        
         console.log("Connexion réussie, redirection vers /admin");
   
         this.router.navigate(['/admin']).then(success => {

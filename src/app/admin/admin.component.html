@@ -1,21 +1,38 @@
-<div class="container mt-5">
-    <div class="row">
-      <div class="col-3">
-        <ul class="list-group">
-          <li class="list-group-item">
-            <a routerLink="gestion-factures">Gestion Factures</a>
-          </li>
-          <li class="list-group-item">
-            <a routerLink="gestion-clients">Gestion Clients (En construction)</a>
-          </li>
-          <li class="list-group-item">
-            <a routerLink="gestion-collaborateurs">Gestion Collaborateurs (En construction)</a>
-          </li>
-        </ul>
+<div class="admin-layout">
+  <!-- Corps principal -->
+  <div class="main">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="user-info">
+        <img src="assets/images/avatar.png" alt="Utilisateur" class="avatar">
+        <div class="user-details">
+          <h3>Bonjour, <span class="username">{{username}}</span> 👋</h3>
+          <p class="today-date">{{ today | date: 'EEEE d MMMM y' : 'fr' }}</p>
+        </div>
       </div>
-      <div class="col-9">
-        <router-outlet></router-outlet>
+      <ul>
+        <li><a routerLink="gestion-factures" routerLinkActive="active">📁 Gestion Factures</a></li>
+        <li><a routerLink="gestion-clients" routerLinkActive="active">👥 Gestion Clients</a></li>
+        <li><a routerLink="gestion-collaborateurs" routerLinkActive="active">🧑‍💼 Collaborateurs</a></li>
+      </ul>
+
+    </aside>
+
+    <!-- Contenu -->
+    <section class="content">
+      <!-- Zone dynamique où les composants enfants seront affichés -->
+      <router-outlet></router-outlet>
+
+      <!-- Affiche ce bloc uniquement si aucune sous-page n'est chargée -->
+      <div *ngIf="isHomeRoute()">
+        <div class="welcome-card">
+          <h2>Bienvenue dans l’espace d’administration</h2>
+          <p>Utilisez le menu à gauche pour accéder aux différentes fonctionnalités.</p>
+        </div>
+        <blockquote class="motivation">
+          « La rigueur de votre gestion fait la solidité de votre entreprise. »
+        </blockquote>
       </div>
-    </div>
+    </section>
   </div>
-  
+</div>

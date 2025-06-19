@@ -1,0 +1,124 @@
+/* Layout global */
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Topbar */
+.topbar {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Sidebar + contenu */
+.main {
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #f1f1f1;
+  padding: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 1rem;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Contenu principal */
+.content {
+  flex: 1;
+  padding: 2rem;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+/* Déconnexion */
+.logout-btn {
+  background: white;
+  color: #007bff;
+  border: 1px solid white;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.logout-btn:hover {
+  background-color: #f0f0f0;
+}
+
+
+
+.welcome-card {
+  background-color: #f0f4f8;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.welcome-card h2 {
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.welcome-card p {
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.motivation {
+  font-style: italic;
+  text-align: center;
+  color: #6c757d;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+.user-info {
+  /*display: flex;*/
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007bff;
+  display: block;
+}
+
+.user-details h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.user-details .today-date {
+  font-size: 0.9rem;
+  color: #666;
+}
