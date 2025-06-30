@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -11,10 +11,10 @@ export class GardService implements CanActivate {
   canActivate(): boolean {
     if (this.authService.isAuthenticated()) {
       console.log("AuthGuard : accès autorisé");
-      return true;
+      return true; // L'utilisateur est authentifié
     } else {
       console.warn("AuthGuard : accès refusé, redirection vers /login");
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login']); // Rediriger vers la page de connexion si non authentifié
       return false;
     }
   }

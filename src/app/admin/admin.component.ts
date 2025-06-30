@@ -36,4 +36,22 @@ export class AdminComponent {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
+
+images: string[] = [
+  'assets/images/slide1.jpg',
+  'assets/images/slide2.jpg',
+  'assets/images/slide3.jpg'
+];
+
+currentIndex: number = 0;
+
+ngOnInit() {
+  setInterval(() => {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+  }, 5000);
+}
+
+
+
 }

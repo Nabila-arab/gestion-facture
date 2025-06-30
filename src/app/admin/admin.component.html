@@ -8,6 +8,8 @@
         <div class="user-details">
           <h3>Bonjour, <span class="username">{{username}}</span> 👋</h3>
           <p class="today-date">{{ today | date: 'EEEE d MMMM y' : 'fr' }}</p>
+           <button class="btn btn-outline-danger mt-4 w-100" (click)="logout()">🚪 Déconnexion</button>
+
         </div>
       </div>
       <ul>
@@ -28,6 +30,14 @@
         <div class="welcome-card">
           <h2>Bienvenue dans l’espace d’administration</h2>
           <p>Utilisez le menu à gauche pour accéder aux différentes fonctionnalités.</p>
+          
+          <div class="carousel-container">
+          <div class="carousel-slide" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+            <img *ngFor="let image of images" [src]="image" alt="Slide" />
+          </div>
+        </div>
+
+
         </div>
         <blockquote class="motivation">
           « La rigueur de votre gestion fait la solidité de votre entreprise. »
